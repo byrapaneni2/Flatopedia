@@ -7,5 +7,4 @@ urls.txt
 html
 delete
 response
-*.pyc
-*.DS_Store
+.DS_Store
