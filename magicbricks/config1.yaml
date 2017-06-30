@@ -1,0 +1,28 @@
+builder:
+  xpath: "//div[@id='about-project-builder']/div[1]/a/h2/text()"
+builder_address:
+  xpath: "//div[@id='about-project-builder']/div[1]//p[@class='add']/text()"
+building_type:
+  xpath: "//div[@id='project-overview-details']//div[@class='row']/div[2]//span[@class='prolist']/text()"
+  process: ["re.split('/', project['building_type'])"]
+status:
+  xpath: "//div[@id='project-overview-details']//div[@class='row']/div[1]//span[@class='prolist']/text()"
+dates:
+  xpath: "//div[@id='project-overview-details']//div[@class='row']/div[1]//div[@class='datatitle']/span/text()"
+
+# floor plan
+built_up_area:
+  xpath: "//div[@id='house-details']/div[1]/div[@class='body']/div[@class='cf-tracking-enabled col']/@data-sqft"
+  process: ["[re.findall('[0-9]+\\.?[0-9]*', p) for p in project['built_up_area']]"]
+unit_bhk:
+  xpath: "//div[@id='house-details']/div[1]/div[@class='body']/div[@class='cf-tracking-enabled col']/@data-bhk"
+unit_type:
+  xpath: "//div[@id='house-details']/div[1]/div[@class='body']/div[@class='cf-tracking-enabled col']/@data-type"
+price:
+  xpath: "//div[@id='house-details']/div[1]/div[@class='body']/div[@class='cf-tracking-enabled col']/@data-price"
+
+# amenities
+amenities:
+  xpath: "//div[@id='amenities']//div[@class='amtlist clearfix']/ul/li/text()"
+
+# [myFunc(p, additionalArgument) for p in pages]
